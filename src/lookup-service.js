@@ -55,7 +55,7 @@ var log         = require('./log.js').getLogger(filename);
  *         the following fields: 'route'
  *
  */
-function XMPPLookupService(port, stream, route_filter) {
+function XMPPLookupService(port, stream, route_filter, options) {
     this._domain_name = stream.to;
     this._port = port;
     this._route = stream.route;
@@ -80,6 +80,15 @@ function XMPPLookupService(port, stream, route_filter) {
             port: this._port
         };
     }
+
+    if (options.hasOwnProperty("route_force")){
+        this._route = {
+            protocol: "xmpp",
+            host: options.route_force.host,
+            port: options.route_force.port, 
+        };
+    }
+
 }
 
 util.inherits(XMPPLookupService, events.EventEmitter);

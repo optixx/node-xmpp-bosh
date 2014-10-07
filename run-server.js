@@ -29,7 +29,7 @@ var path  = require('path');
 var nxb   = require("./src/main.js");
 var dutil = require('./src/dutil.js');
 
-var BOSH_DEFAULT_CONFIG_PATH = '/etc/bosh.js.conf';
+var BOSH_DEFAULT_CONFIG_PATH = './conf/bosh.conf';
 
 
 function app_meta() {
@@ -112,40 +112,6 @@ function main() {
 				process.exit(2);
 			}
 		}
-	}
-
-	if (opts.port === -1) {
-		if (!server_options.port) {
-			server_options.port = 5280;
-		}
-	}
-	else {
-		var _port = Math.ceil(opts.port);
-		if (!_port) {
-			_port = 5280;
-		}
-		server_options.port = _port;
-	}
-
-	if (opts.host === -1) {
-		if (!server_options.host) {
-			server_options.host = '0.0.0.0';
-		}
-	}
-	else {
-		server_options.host = opts.host;
-	}
-
-	if (opts.path === -1) {
-		if (!server_options.path) {
-			server_options.path = '/http-bind/';
-		}
-	}
-	else {
-		if (opts.path.length > 0 && opts.path[0] !== "/") {
-			opts.path = "/" + opts.path;
-		}
-		server_options.path = opts.path;
 	}
 
 	if (opts.logging === -1) {
