@@ -81,13 +81,12 @@ function XMPPLookupService(port, stream, route_filter, options) {
         };
     }
 
-    if (options.hasOwnProperty("route_force")){
-        this._route = {
-            protocol: "xmpp",
-            host: options.route_force.host,
-            port: options.route_force.port, 
-        };
-    }
+	this._route = {
+		protocol: "xmpp",
+		host: "localhost", 
+		port: this._port, 
+	};
+
 
 }
 
